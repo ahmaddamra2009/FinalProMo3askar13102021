@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Blog>
+
+    <!-- Latest blog -->
+    <section id="aa-latest-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="aa-latest-blog-area">
+                        <div class="aa-title">
+                            <h2>Latest Blog</h2>
+                            <span></span>
+                            <p>Site blog</p>
+                        </div>
+                        <div class="aa-latest-blog-content">
+                            <div class="row">
+                                @foreach (var item in Model)
+                                {
+                                    <div class="col-md-4">
+                                        <article class="aa-blog-single">
+                                            <figure class="aa-blog-img">
+                                                <a href="#"><img src="~/img/blog-img-1.jpg" alt="img"></a>
+                                                <span class="aa-date-tag">@item.PublishDate.ToShortDateString()</span>
+                                            </figure>
+                                            <div class="aa-blog-single-content">
+                                                <h3><a asp-action="BlogDetails" asp-controller="Home" asp-route-id="@item.BlogId">@item.BlogTitle</a></h3>
+                                                <p>@item.BlogDesc.Substring(0,20)</p>
+                                                <div class="aa-blog-single-bottom">
+                                                    <a asp-action="BlogDetails" asp-controller="Home" asp-route-id="@item.BlogId" class="aa-blog-author"><i class="fa fa-bookmark"></i> More</a>
+                                                    <a href="#" class="aa-blog-comments"><i class="fa fa-comment-o"></i>6</a>
+                                                </div>
+                                            </div>
+
+                                        </article>
+                                    </div>
+                                }
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / Latest blog -->
