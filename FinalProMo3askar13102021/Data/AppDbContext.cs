@@ -21,6 +21,7 @@ namespace FinalProMo3askar13102021.Data
         public DbSet<Menu> Menus { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
     }
 }

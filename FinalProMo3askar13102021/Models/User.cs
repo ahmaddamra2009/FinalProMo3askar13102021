@@ -14,7 +14,11 @@ namespace FinalProMo3askar13102021.Models
         public string UserName { get; set; }
         [Required]
         [Display(Name = "Password")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         public bool isActive { get; set; }
+        [Display(Name ="Role Name")]
+        public int RoleId { get; set; }
+        public Role Role { get; set; }
     }
 }

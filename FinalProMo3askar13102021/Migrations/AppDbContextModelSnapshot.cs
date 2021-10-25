@@ -178,6 +178,22 @@ namespace FinalProMo3askar13102021.Migrations
                     b.ToTable("Menus");
                 });
 
+            modelBuilder.Entity("FinalProMo3askar13102021.Models.Role", b =>
+                {
+                    b.Property<int>("RoleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RoleId");
+
+                    b.ToTable("Roles");
+                });
+
             modelBuilder.Entity("FinalProMo3askar13102021.Models.Slider", b =>
                 {
                     b.Property<int>("SliderId")
@@ -232,6 +248,9 @@ namespace FinalProMo3askar13102021.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -241,7 +260,20 @@ namespace FinalProMo3askar13102021.Migrations
 
                     b.HasKey("UserId");
 
+                    b.HasIndex("RoleId");
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("FinalProMo3askar13102021.Models.User", b =>
+                {
+                    b.HasOne("FinalProMo3askar13102021.Models.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
                 });
 #pragma warning restore 612, 618
         }
